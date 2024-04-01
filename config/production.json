@@ -1,0 +1,6 @@
+{
+  "port": 5000,
+  "jwtSecret": "Makarov Timofey Coffe",
+  "mongoUri": "mongodb+srv://makarovtim59:t1i3m5o7x9a@coffee.elw1vrf.mongodb.net/?retryWrites=true&w=majority&appName=Coffee",
+  "baseUrl": "http://localhost:5000"
+}
