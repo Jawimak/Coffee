@@ -10,6 +10,8 @@ app.use(express.json({extended: true}))
 
 app.use('/api/auth', require('./routes/auth.routes'))
 app.use('/api/link', require('./routes/link.routes'))
+app.use('/api/course', require('./routes/course.routes'))
+app.use('/api/level', require('./routes/level.routes'))
 app.use('/t', require('./routes/redirect.routes'))
 
 if(process.env.NODE_ENV === 'production'){

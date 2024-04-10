@@ -11,8 +11,8 @@ const User = require('../models/User')
 router.post(
     '/register',
     [
-        check('email', 'Uncorrect email').isEmail(),
-        check('password', 'uncorrect password')
+        check('email', 'Incorrect email').isEmail(),
+        check('password', 'Incorrect password')
             .isLength({min: 6})
     ],
     async (req, res) => {
@@ -23,7 +23,7 @@ router.post(
         if(!errors.isEmpty()){
             return res.status(400).json({
                 errors: errors.array(),
-                message: 'Uncorrect registretion data'
+                message: 'Incorrect registration data'
             })
         }
         const {email, password} = req.body
@@ -63,7 +63,7 @@ router.post(
         if(!errors.isEmpty()){
             return res.status(400).json({
                 errors: errors.array(),
-                message: 'Uncorrect login data'
+                message: 'Incorrect login data'
             })
         }
 

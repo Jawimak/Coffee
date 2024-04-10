@@ -1,35 +1,29 @@
 const {Router} = require('express')
-const Link = require('../models/Link')
+const Course = require('../models/Course')
 const {validationResult} = require("express-validator");
 const User = require("../models/User");
 const bcrypt = require("bcryptjs");
 const router = Router()
 const  auth = require('../middleware/auth.middleware')
 const config = require('config')
-const shortid = require('shortid')
 
-router.post('/generate', auth, async (req, res)=>{
+router.post('/create_course', auth, async (req, res)=>{
     try{
-        const baseUrl = config.get('baseUrl')
-        const {from} = req.body
+        const {name, title, level} = req.body
 
-        const code = shortid.generate()
-
-        const existing = await Link.findOne({from})
+        const existing = await Course.findOne({name})
 
         if(existing){
-            return res.json({link: existing})
+            return res.json({course: existing})
         }
 
-        const to = baseUrl + '/t/' + code
-
-        const link = new Link({
-            code, to, from, owner: req.user.userId
+        const course = new Course({
+            name, title, level, creator: req.user.userId
         })
 
-        await link.save()
+        await course.save()
 
-        res.status(201).json({link})
+        res.status(201).json({course})
 
     }catch(e){
         res.status(500).json({message: "Some error. Try more"})
@@ -38,8 +32,8 @@ router.post('/generate', auth, async (req, res)=>{
 
 router.get('/', auth, async (req, res)=>{
     try{
-        const links = await Link.find({owner: req.user.userId})
-        res.json(links)
+        const courses = await Course.find()
+        res.json(courses)
     }catch(e){
         res.status(500).json({message: "Some error. Try more"})
     }
@@ -47,8 +41,8 @@ router.get('/', auth, async (req, res)=>{
 
 router.get('/:id', auth, async (req, res)=>{
     try{
-        const link = await Link.findById(req.params.id) //??
-        res.json(link)
+        const course = await Course.findById(req.params.id) //??
+        res.json(course)
     }catch(e){
         res.status(500).json({message: "Some error. Try more"})
     }

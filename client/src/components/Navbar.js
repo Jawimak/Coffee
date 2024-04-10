@@ -15,10 +15,12 @@ export const Navbar = ()=>{
     return (
         <nav>
             <div className="nav-wrapper">
-                <span className="brand-logo">Short link</span>
+                <span className="brand-logo">Кофейня Три Зерна</span>
                 <ul id="nav-mobile" className="right hide-on-med-and-down">
                     <li><NavLink to="/create">Create</NavLink></li>
                     <li><NavLink to="/links">Links</NavLink></li>
+                    <li><NavLink to="/create_course">Создать курс</NavLink></li>
+                    <li><NavLink to="/courses">Курсы</NavLink></li>
                     <li><a href="/" onClick={logoutHandler}>Exit</a></li>
                 </ul>
             </div>

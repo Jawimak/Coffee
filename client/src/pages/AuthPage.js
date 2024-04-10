@@ -75,7 +75,6 @@ export const AuthPage = ()=>{
                                 <label htmlFor="password">Password</label>
 
                             </div>
-
                         </div>
 
                     </div>
