@@ -50,7 +50,7 @@ export const AuthPage = ()=>{
                 <h1>Coffee site</h1>
                 <div className="card blue-grey darken-1">
                     <div className="card-content white-text">
-                        <span className="card-title">Autorization</span>
+                        <span className="card-title">Авторизация</span>
                         <div>
                             <div className="input-field">
                                 <input
@@ -72,7 +72,7 @@ export const AuthPage = ()=>{
                                     onChange={changeHandler}
                                     value={form.password}
                                 />
-                                <label htmlFor="password">Password</label>
+                                <label htmlFor="password">Пароль</label>
 
                             </div>
                         </div>
@@ -85,14 +85,14 @@ export const AuthPage = ()=>{
                             onClick={loginHandler}
                             disabled={loading}
                         >
-                            Sign in
+                            Войти
                         </button>
                         <button
                             className="btn grey lighten-1 black-text"
                             onClick={registerHandler}
                             disabled={loading}
                         >
-                            Sign up
+                            Зарегистрироваться
                         </button>
                     </div>
                 </div>

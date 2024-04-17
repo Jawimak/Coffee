@@ -12,15 +12,20 @@ export const CourseDetailPage = ()=>{
     const {token} = useContext(AuthContext)
     const {request, loading} = useHttp()
     const [course, setCourse] = useState(null)
+    const [question, setQuestion] = useState(null)
     const courseId = useParams().id
 
     const getCourse = useCallback(async () => {
         try{
             const fetched = await request(`/api/course/${courseId}`, 'GET', null, {
                 Authorization: `Bearer ${token}`
-
             })
             setCourse(fetched)
+
+            const fetchedQuestions = await request(`/api/course/get_questions/${courseId}`, 'GET', null, {
+                Authorization: `Bearer ${token}`
+            })
+            setQuestion(fetchedQuestions)
         }catch (e) {
 
         }
@@ -36,7 +41,7 @@ export const CourseDetailPage = ()=>{
 
     return (
         <>
-            {!loading &&  course && <CourseCard course={course}/>}
+            {!loading && course && question && <CourseCard course={course} question={question}/>}
         </>
     )
 }

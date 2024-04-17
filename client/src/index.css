@@ -1,1 +1,13 @@
 @import "~materialize-css/dist/css/materialize.min.css";
+
+.card.column {
+    display: flex;
+    flex-direction: column;
+    width: 46%;
+    margin: 2%;
+}
+
+.rowCard {
+    display: flex;
+    flex-wrap: wrap;
+}
